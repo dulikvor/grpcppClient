@@ -1,5 +1,6 @@
 import argparse
 from grpcppClient.Configuration import Configuration
+from grpcppClient.Lexer import Lexer
 
 def main():
     parser = argparse.ArgumentParser(description='grpc client.')
@@ -8,6 +9,9 @@ def main():
 
     config = Configuration()
     config.LoadParams(IDL_LOCATION = args.idl)
+
+    lexer = Lexer()
+    lexer.ParseSchema(config.GetParam('IDL_LOCATION'))
 
 if __name__== "__main__":
     main()

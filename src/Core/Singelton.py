@@ -1,5 +1,3 @@
-import grpcppClient.Lexer
-
 class Singelton(type):
     __instance = {}
 
