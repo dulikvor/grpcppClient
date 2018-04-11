@@ -1,3 +1,13 @@
+class LockGuard:
+    def __init__(self, lock):
+        self.__lock = lock
+
+    def __enter__(self):
+       self.__lock.aquire()
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.__lock.release()
+
 class File:
     def __init__(self, filePath, permissions = 'r'):
         self.__filePath = filePath
