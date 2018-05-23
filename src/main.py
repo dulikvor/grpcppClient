@@ -1,6 +1,8 @@
 import argparse
+import curses
 from grpcppClient.Configuration import Configuration
-from grpcppClient.Lexer import Lexer
+from grpcppClient.Parser import Lexer
+from grpcppClient.Terminal import *
 
 def main():
     parser = argparse.ArgumentParser(description='grpc client.')
@@ -14,4 +16,8 @@ def main():
     lexer.ParseSchema(config.GetParam('IDL_LOCATION'))
 
 if __name__== "__main__":
-    main()
+    with CursesConfigure():
+        terminal = Terminal()
+        terminal.start()
+        terminal.waitForCompletion()
+        main()
